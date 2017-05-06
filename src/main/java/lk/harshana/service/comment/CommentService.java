@@ -1,8 +1,8 @@
-package lk.harshana.comment.service;
+package lk.harshana.service.comment;
 
 import java.util.List;
 
-import javax.xml.stream.events.Comment;
+import lk.harshana.model.Comment;
 
 public interface CommentService {
 

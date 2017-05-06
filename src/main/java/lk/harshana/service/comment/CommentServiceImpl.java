@@ -1,12 +1,11 @@
-package lk.harshana.comment.service;
+package lk.harshana.service.comment;
 
 import java.util.List;
 
-import javax.xml.stream.events.Comment;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-import lk.harshana.comment.repository.CommentRepository;
+import lk.harshana.model.Comment;
+import lk.harshana.repository.comment.CommentRepository;
 
 public class CommentServiceImpl implements CommentService {
 

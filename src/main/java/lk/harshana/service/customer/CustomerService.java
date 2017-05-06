@@ -1,4 +1,4 @@
-package lk.harshana.customer.service;
+package lk.harshana.service.customer;
 
 import java.util.List;
 

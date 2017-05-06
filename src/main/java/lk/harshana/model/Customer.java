@@ -10,9 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="customer")
-public class Customer implements Serializable {
-
-	private static final long SerialVersionUID = 1l;
+public class Customer  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
