@@ -18,7 +18,7 @@ public class OrderLine {
 	private Integer orderLineId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="id")
+	@JoinColumn(name="product_id")
 	private Product product;
 	private int amount;
 	private float purchacePrice;
