@@ -1,47 +1,48 @@
-package lk.harshana.product.service;
+package lk.harshana.service.order;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lk.harshana.model.Product;
-import lk.harshana.product.repository.ProductRepository;
+import lk.harshana.model.Order;
+import lk.harshana.repository.order.OrderRepository;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class OrderServiceImpl implements OrderService {
 
 	@Autowired
-	private ProductRepository productRepository;
+	private OrderRepository orderRepository;
 	
 	@Override
-	public void createProduct(Product product) {
+	public void createOrder(Order order) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateProduct(int id, Product product) {
+	public void updateOrder(int id, Order order) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<Product> getAllProduct() {
+	public List<Order> getAllOrder() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Product getProduct(String name) {
+	public Order getOrder(Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean deleteProduct(int id) {
+	public boolean deleteOrder(int id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 }

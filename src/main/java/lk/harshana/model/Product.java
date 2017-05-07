@@ -25,7 +25,7 @@ public class Product {
 	private boolean inStock;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "product_comment", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "id"))
+	@JoinTable(name = "product_comment", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "comment_id"))
 	private List<Comment> comments = new ArrayList<Comment>();
 	
 	public Product() {

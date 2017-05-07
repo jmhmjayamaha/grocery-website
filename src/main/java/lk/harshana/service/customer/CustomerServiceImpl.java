@@ -1,14 +1,14 @@
-package lk.harshana.customer.service;
+package lk.harshana.service.customer;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lk.harshana.customer.repository.CustomerRepository;
 import lk.harshana.model.Customer;
+import lk.harshana.repository.customer.CustomerRepository;
 
-@Service("customerService")
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired

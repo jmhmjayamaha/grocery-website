@@ -1,4 +1,4 @@
-package lk.harshana.product.repository;
+package lk.harshana.repository.product;
 
 import org.springframework.data.repository.CrudRepository;
 
