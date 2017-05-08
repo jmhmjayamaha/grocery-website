@@ -17,31 +17,35 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	public void createOrder(Order order) {
-		// TODO Auto-generated method stub
-		
+		orderRepository.save(order);
 	}
 
 	@Override
 	public void updateOrder(int id, Order order) {
-		// TODO Auto-generated method stub
+		Order o = orderRepository.findOne(id);
+		order.setOrder_id(id);
+		if(o != null) {
+			orderRepository.save(order);
+		}
 		
 	}
 
 	@Override
 	public List<Order> getAllOrder() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Order>) orderRepository.findAll();
 	}
 
 	@Override
 	public Order getOrder(Date date) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.findByOrderDate(date);
 	}
 
 	@Override
 	public boolean deleteOrder(int id) {
-		// TODO Auto-generated method stub
+		Order order = orderRepository.findOne(id);
+		if(order != null )  {
+			return true;
+		}
 		return false;
 	}
 	

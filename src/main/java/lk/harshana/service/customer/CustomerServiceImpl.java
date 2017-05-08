@@ -16,43 +16,44 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Override
 	public void createCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		
+		customerRepository.save(customer);
 	}
 
 	@Override
 	public List<Customer> findAllCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Customer>) customerRepository.findAll();
 	}
 
 	@Override
 	public Customer findCustomerByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerRepository.findByName(name);
 	}
 
 	@Override
 	public Customer findCustomerByAddress(String address) {
-		// TODO Auto-generated method stub
+//		return  customerRepository.findByAddressWith(address);
 		return null;
 	}
 
 	@Override
 	public Customer findCustomerByTelNo(String telNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerRepository.findByTelNo(telNo);
 	}
 
 	@Override
 	public void updateCustomer(int id, Customer customer) {
-		// TODO Auto-generated method stub
-		
+		Customer cus = customerRepository.findOne(id);
+		customer.setId(id);
+		customerRepository.save(customer);
 	}
 
 	@Override
 	public boolean deleteCustomer(int id) {
-		// TODO Auto-generated method stub
+		Customer customer = customerRepository.findOne(id);
+		
+		if(customer != null) {
+			return true;
+		}
 		return false;
 	}
 
