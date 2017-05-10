@@ -16,31 +16,36 @@ public class OrderLineServiceImpl implements OrderLineService {
 	
 	@Override
 	public void createOrderLine(OrderLine orderLine) {
-		// TODO Auto-generated method stub
-		
+		orderLineRepository.save(orderLine);
 	}
 
 	@Override
 	public void updateOrderLine(int id, OrderLine orderLine) {
-		// TODO Auto-generated method stub
+		OrderLine line = orderLineRepository.findOne(id);
 		
+		if(line != null ){
+			orderLineRepository.save(orderLine);
+		}
 	}
 
 	@Override
 	public List<OrderLine> getAllOrderLine() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<OrderLine>) orderLineRepository.findAll();
 	}
 
 	@Override
 	public OrderLine getOrderLine(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderLineRepository.findOne(id);
 	}
 
 	@Override
 	public boolean deleteOrderLine(int id) {
-		// TODO Auto-generated method stub
+		OrderLine orderLine = orderLineRepository.findOne(id);
+		
+		if(orderLine != null) {
+			orderLineRepository.delete(orderLine);
+			return true;
+		}
 		return false;
 	}
 

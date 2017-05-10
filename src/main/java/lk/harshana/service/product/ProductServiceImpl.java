@@ -16,31 +16,43 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public void createProduct(Product product) {
-		// TODO Auto-generated method stub
-		
+		if(productRepository.findByName(product.getName()) == null ) {
+			productRepository.save(product);
+		} else {
+			// exception
+		}
+
 	}
 
 	@Override
 	public void updateProduct(int id, Product product) {
-		// TODO Auto-generated method stub
+		Product p = productRepository.findOne(id);
+		
+		if(p != null) {
+			product.setProduct_id(id);
+			productRepository.save(product);
+		}
 		
 	}
 
 	@Override
 	public List<Product> getAllProduct() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Product>) productRepository.findAll();
 	}
 
 	@Override
 	public Product getProduct(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return productRepository.findByName(name);
 	}
 
 	@Override
 	public boolean deleteProduct(int id) {
-		// TODO Auto-generated method stub
+		Product product = productRepository.findOne(id);
+		
+		if(product != null) {
+			productRepository.delete(product);
+			return true;
+		}
 		return false;
 	}
 
