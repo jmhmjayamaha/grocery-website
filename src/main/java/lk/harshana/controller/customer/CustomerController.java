@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,18 @@ public class CustomerController {
 	@ResponseStatus(value=HttpStatus.OK)
 	public List<Customer> listAllCustomers() {
 		return customerService.findAllCustomers();
+	}
+	
+	@RequestMapping(method= RequestMethod.GET , value="/search")
+	@ResponseStatus(value=HttpStatus.OK)
+	public List<Customer> findByName(@RequestParam("name") String name) {
+		return customerService.findCustomerByName(name);
+	}
+	
+	@RequestMapping(method= RequestMethod.GET , value="/search/telNo")
+	@ResponseStatus(value=HttpStatus.OK)
+	public Customer findByTelNo(@RequestParam("telNo") String telNo) {
+		return customerService.findCustomerByTelNo(telNo);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="{id}")
