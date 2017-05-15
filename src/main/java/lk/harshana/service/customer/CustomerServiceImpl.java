@@ -43,8 +43,13 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void updateCustomer(int id, Customer customer) {
 		Customer cus = customerRepository.findOne(id);
-		customer.setId(id);
-		customerRepository.save(customer);
+		if(cus != null) {
+			customer.setId(id);
+			customerRepository.save(customer);
+		}
+		else {
+			// exception
+		}
 	}
 
 	@Override
@@ -52,6 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer customer = customerRepository.findOne(id);
 		
 		if(customer != null) {
+			customerRepository.delete(customer);
 			return true;
 		}
 		return false;
