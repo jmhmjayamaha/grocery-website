@@ -18,6 +18,10 @@ public class Comment implements Serializable {
 	private Integer id;
 	private String comment;
 
+	public Comment() {
+		
+	}
+	
 	public Comment(String comment) {
 		super();
 		this.comment = comment;
