@@ -14,4 +14,12 @@ INSERT INTO `grocery_website_db`.`product`(`product_id`,`in_stock`,`name`,`price
 
 INSERT INTO `grocery_website_db`.`customer`(`id`,`address`,`name`,`tel_no`)VALUES(1,'warakapola','Harshana','0774231747');
 
+-- comment 
 
+INSERT INTO `grocery_website_db`.`comment`(`id`,`comment`)VALUES(1, 'good product'); 
+INSERT INTO `grocery_website_db`.`comment`(`id`,`comment`)VALUES(2, 'out of stock');
+
+-- product_comment
+
+INSERT INTO `grocery_website_db`.`product_comment`(`product_id`,`comment_id`)VALUES(1,1);
+INSERT INTO `grocery_website_db`.`product_comment`(`product_id`,`comment_id`)VALUES(1,2);
