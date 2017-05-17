@@ -1,5 +1,6 @@
 package lk.harshana.controller.product;
 
+import java.util.AbstractMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,21 @@ public class ProductController {
 //		Product product = new Product(productDto.getName(), productDto.getPrice(),productDto.isInStock(), productDto.getComments() );
 //		productService.updateProduct(id, product);
 //	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
+	@ResponseStatus(value = HttpStatus.OK)
+	public AbstractMap.SimpleEntry<String, String> deleteProduct(@PathVariable("id") int id) {
+		if(productService.deleteProduct(id)) {
+			return new AbstractMap.SimpleEntry<String, String>("status", "deleted");
+		}
+		return new AbstractMap.SimpleEntry<String, String>("status", "not deleted");
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT, value = "/{id}")
+	@ResponseStatus(value = HttpStatus.CREATED)
+	public void updateProduct(@PathVariable("id") int id, @RequestBody ProductDto dto) {
+		Product product = new Product(dto.getName(), dto.getPrice(),dto.isInStock(), null);
+		int i = productService.updateProduct(id, product);
+	}
 }
  
