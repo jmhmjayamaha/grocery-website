@@ -24,16 +24,18 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
-	@Override
-	public void updateProduct(int id, Product product) {
-		Product p = productRepository.findOne(id);
-		
-		if(p != null) {
-			product.setProduct_id(id);
-			productRepository.save(product);
-		}
-		
-	}
+//	@Override
+//	public void updateProduct(int id, Product product) {
+//		Product p = productRepository.findOne(id);
+//		
+//		if(p != null) {
+//			product.setProduct_id(id);
+//			productRepository.save(product);
+//		}
+//		
+//	}
+	
+	
 
 	@Override
 	public List<Product> getAllProduct() {
@@ -54,6 +56,12 @@ public class ProductServiceImpl implements ProductService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public int updateProduct(int id, Product product) {
+		product.setProduct_id(id);
+		return productRepository.updateProduct(product.getName(), product.getPrice(), product.isInStock(), product.getProduct_id());
 	}
 
 }
