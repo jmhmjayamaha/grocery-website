@@ -1,14 +1,12 @@
 package lk.harshana.service.comment;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lk.harshana.model.Comment;
+import lk.harshana.model.Product;
 import lk.harshana.repository.comment.CommentRepository;
+import lk.harshana.repository.product.ProductRepository;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -16,27 +14,27 @@ public class CommentServiceImpl implements CommentService {
 	@Autowired
 	private CommentRepository commentRepository;
 	
+	@Autowired
+	private ProductRepository productRepository;
+	
 	@Override
-	public void createComment(Comment comment) {
-//		Set<String> messWord = new HashSet<String>();
-//		messWord.add("fuck");
-//		
-//		for(String word : messWord) {
-//			
-//		}
+	public void createComment(int id , Comment comment) {
+		Product product = productRepository.findOne(id);
+		
+		comment.setProduct(product);
 		commentRepository.save(comment);
 	}
 
-	@Override
-	public List<Comment> getAllComment() {
-		List<Comment> list = (List<Comment>) commentRepository.findAll();
-		
-		if(list.isEmpty()) {
-			return null;
-		} else {
-			return list;
-		}
-	}
+//	@Override
+//	public List<Comment> getAllComment() {
+//		List<Comment> list = (List<Comment>) commentRepository.findAll();
+//		
+//		if(list.isEmpty()) {
+//			return null;
+//		} else {
+//			return list;
+//		}
+//	}
 
 	@Override
 	public boolean deleteComment(int id) {
