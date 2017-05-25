@@ -1,7 +1,5 @@
 package lk.harshana.controller.comment;
 
-import java.util.AbstractMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -23,20 +21,19 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST, value="/{productId}")
 	@ResponseStatus(value=HttpStatus.CREATED)
-	public void createComment(@RequestBody @Validated CommentDto commentDto) {
-		commentService.createComment(new Comment(commentDto.getComment()));
+	public void createComment(@PathVariable("productId") int productId, @RequestBody @Validated CommentDto commentDto) {
+		commentService.createComment(productId,new Comment(commentDto.getComment()));
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE)
-	@ResponseStatus(value = HttpStatus.OK)
-	public AbstractMap.SimpleEntry<String, String> deleteComment(@PathVariable("id") int id) {
-		if(commentService.deleteComment(id)) {
-			return new AbstractMap.SimpleEntry<String, String>("status", "true");
-		}
-		return new AbstractMap.SimpleEntry<String, String>("status", "flase");
-	}
-	
+//	@RequestMapping(method = RequestMethod.DELETE)
+//	@ResponseStatus(value = HttpStatus.OK)
+//	public AbstractMap.SimpleEntry<String, String> deleteComment(@PathVariable("id") int id) {
+//		if(commentService.deleteComment(id)) {
+//			return new AbstractMap.SimpleEntry<String, String>("status", "true");
+//		}
+//		return new AbstractMap.SimpleEntry<String, String>("status", "flase");
+//	}
 	
 }
